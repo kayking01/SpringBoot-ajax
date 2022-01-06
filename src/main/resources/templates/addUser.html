@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>UpdateUser</title>
+    <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $("#btn1").click(function () {
+                $.post('/test/addUser',{
+                    userName: userName1.value,
+                    passWord: passWord1.value
+                },function (){
+                    alert("添加成功");
+                    location="/test/getUserAll";
+                })
+
+            })
+        })
+    </script>
+</head>
+
+<div>
+    <table>
+        <tr>
+            <button id="btn1">添加用户</button>
+        </tr>
+        <tr>
+            <td>userName：</td>
+            <td><input type="text" name="userName1" id="userName1"></td>
+        </tr>
+
+        <tr>
+            <td>passWord</td>
+            <td><input type="text" name="passWord1" id="passWord1"></td>
+        </tr>
+    </table>
+</div>
+<body>
+
+</body>
+</html>

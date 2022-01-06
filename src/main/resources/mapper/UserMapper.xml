@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kay.demo.mapper.UserMapper">
+    <insert id="addUser" parameterType="User">
+        insert into user(userName,passWord) values(#{userName},#{passWord})
+    </insert>
+
+    <select id="findById" parameterType="java.lang.Integer" resultType="User">
+        select * from user where id = #{id}
+    </select>
+
+    <select id="getUserAll" resultType="com.kay.demo.entity.User">
+        select * from user
+    </select>
+
+    <delete id="deleteById" parameterType="java.lang.Integer">
+        delete from user where id = #{id}
+    </delete>
+
+    <update id="updateById" parameterType="User">
+        update user set userName=#{userName},password=#{passWord} where id = #{id}
+    </update>
+</mapper>

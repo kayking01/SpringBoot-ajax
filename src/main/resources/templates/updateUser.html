@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>UpdateUser</title>
+    <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $("#btn1").click(function () {
+                $.post('/test/findById',{
+                    id: id1.value
+                },function (data) {
+                    if(data.userName == undefined ){
+                        alert("违法输入");
+                    }else{
+                        id1.vaule= data.id,
+                            userName1.value = data.userName,
+                            passWord1.value = data.passWord
+                    }
+                })
+            })
+
+             $('#btn2').click(function () {
+                 $.post('/test/updateById',{
+                     id: id1.value,
+                     userName: userName1.value,
+                     passWord: passWord1.value
+                 },function () {
+
+                     alert("修改成功");
+                     location="/test/getUserAll";
+                 })
+             })
+
+
+
+        })
+    </script>
+</head>
+
+<div>
+    <p>旧</p>
+    <table>
+        <tr>
+        <tr>
+            <button id="btn1">选择用户</button>
+        </tr>
+            <td><input type="text" name="id1" id="id1"></td>
+        </tr>
+        <tr>
+            <td>userName：</td>
+            <td><input type="text" name="userName1" id="userName1"></td>
+        </tr>
+
+        <tr>
+            <td>passWord</td>
+            <td><input type="text" name="passWord1" id="passWord1"></td>
+        </tr>
+    </table>
+    <button id="btn2">修改</button>
+
+</div>
+<body>
+
+</body>
+</html>

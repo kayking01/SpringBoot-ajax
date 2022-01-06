@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>User</title>
+    <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script type="text/javascript">
+
+        function del(id){
+            alert("要删除的id："+ id);
+            $.post('/test/deleteById',{
+                id: id
+            },function (){
+                alert("删除成功");
+                location="/test/getUserAll";
+            })
+        };
+    </script>
+</head>
+<body>
+
+<div>
+    <button onclick="location='/test/getUserAll'">展示</button>
+    <button onclick="location='/test/toAddUser'">新增</button>
+    <button onclick="location='/test/toUpdateUser'">修改</button>
+    <table>
+        <tr>
+            <td>id</td><td>userName</td><td>passWord</td>
+        </tr>
+        <tr th:each="user:${users}">
+            <td th:text="${user.id}"></td>
+            <td th:text="${user.userName}"></td>
+            <td th:text="${user.passWord}"></td>
+            <td><button th:onclick="'del('+${user.id}+')'">删除</button></td>
+        </tr>
+    </table>
+</div>
+</body>
+</html>
